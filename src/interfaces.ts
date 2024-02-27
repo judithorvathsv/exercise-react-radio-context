@@ -1,3 +1,9 @@
+export interface IRoute {
+  id: number;
+  name: string;
+  path: string;
+}
+
 export interface IChannelProps {
   image: string;
   imagetemplate: string;
@@ -16,8 +22,25 @@ export interface IChannelProps {
   name: string;
 }
 
-export interface IRoute {
+export interface IProgramsProps {
+  allPrograms: any;
+  handleSelectedCategory: (selectedOption: string) => void;
+}
+
+export interface IProgramProps {
+  program: {
+    id: number;
+    programimage: string;
+    name: string;
+    description: string;
+  };
+}
+
+export interface IProgramCategoryProps {
   id: number;
   name: string;
-  path: string;
+}
+
+export interface ICategoryPops {
+  handleSelectedCategory: (selectedOption: string) => void;
 }
