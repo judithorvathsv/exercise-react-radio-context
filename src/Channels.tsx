@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Channel from "./Channel";
 import { IChannelProps } from "./interfaces";
 
@@ -10,7 +11,9 @@ const Channels = ({ allChannels }: IAllChannelsProps) => {
     <div>
       <div>
         {allChannels.map((channel: IChannelProps) => (
-          <Channel channel={channel} key={channel.id} />
+          <Link to={`/channels/${channel.id}`}>
+            <Channel channel={channel} key={channel.id} />
+          </Link>
         ))}
       </div>
     </div>

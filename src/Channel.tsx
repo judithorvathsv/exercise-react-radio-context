@@ -1,17 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { get } from "./http";
 
 const Channel = ({ channel }: any) => {
-  const [programs, setPrograms] = useState();
-
-  function handleAllProgramToChannel(e: any) {
-    console.log(e.currentTarget.id);
-  }
 
   return (
-    <div id={channel.id} onClick={(e) => handleAllProgramToChannel(e)}>
-      <img src={channel.image} alt="Channel image" />
-      <p>{channel.name}</p>
-    </div>
+    <>
+      <div id={channel.id}>
+        <img src={channel.image} alt="Channel image" />
+      </div>
+      <div></div>
+    </>
   );
 };
 

@@ -15,3 +15,9 @@ export interface IChannelProps {
   id: number;
   name: string;
 }
+
+export interface IRoute {
+  id: number;
+  name: string;
+  path: string;
+}
