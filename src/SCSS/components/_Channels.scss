@@ -1,5 +1,10 @@
 @use "../abstracts/colors";
 
+#channelsTitle {
+  padding-left: 1rem;
+  color: white;
+}
+
 .channelWrapperDiv {
   display: flex;
   flex-direction: row;

@@ -1,0 +1,29 @@
+@use "../abstracts/colors";
+
+#selectedProgramContainer {
+  padding: 1rem;
+}
+
+#selectedProgramSection {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+}
+
+#selectedProgramImg {
+  padding-right: 10%;
+}
+
+#selectedProgramInfo {
+  width: 40%;
+  color: white;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+#selectedProgramTitle {
+  font-size: 1.5rem;
+}

@@ -67,9 +67,14 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
   }, [searchedProgramName]);
 
   return (
-    <>
-      <Categories handleSelectedCategory={handleSelectedCategory} />
-      <ProgramSearchInput handleSearchedProgram={handleSearchedProgram} />
+    <div id="programsContainer">
+      <h2 id="programsTitle">All Programs</h2>
+      <div id="searchWrapper">
+        <h3>Search in Programs</h3>
+        <Categories handleSelectedCategory={handleSelectedCategory} />
+        <ProgramSearchInput handleSearchedProgram={handleSearchedProgram} />
+      </div>
+
       <div>
         {searchedPrograms !== null &&
           searchedProgramName.length > 1 &&
@@ -81,10 +86,10 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
             </div>
           ))}
       </div>
-      <hr />
 
-      <div>
-        {programs !== undefined &&
+      <div id="programsWrapper">
+        {searchedProgramName == "" &&
+          programs !== undefined &&
           programs.length > 0 &&
           programs.map((program: any) => (
             <div>
@@ -94,7 +99,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
             </div>
           ))}
       </div>
-    </>
+    </div>
   );
 };
 

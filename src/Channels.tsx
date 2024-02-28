@@ -22,15 +22,18 @@ const Channels = ({ getAllChannels }: IChannelsProps) => {
   }, []);
 
   return (
-    <div className="channelWrapperDiv">
-      {channels !== undefined &&
-        channels.length > 0 &&
-        channels.map((channel: any) => (
-          <Link to={`/channels/${channel.id}`}>
-            <Channel channel={channel} key={channel.id} />
-          </Link>
-        ))}
-    </div>
+    <>
+      <h2 id="channelsTitle">All Channels</h2>
+      <div className="channelWrapperDiv">
+        {channels !== undefined &&
+          channels.length > 0 &&
+          channels.map((channel: any) => (
+            <Link to={`/channels/${channel.id}`}>
+              <Channel channel={channel} key={channel.id} />
+            </Link>
+          ))}
+      </div>
+    </>
   );
 };
 

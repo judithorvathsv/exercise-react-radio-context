@@ -11,12 +11,17 @@ const SelectedProgram = ({ allPrograms }: any) => {
     }
   }
   return (
-    <div>
-      <Link to={`/programs`}>Back to programs</Link>
-      <p>SELECTED</p>
-      <img src={selectedProgram.programimage} alt="Program picture" />
-      <p>{selectedProgram.name}</p>
-      <p>{selectedProgram.description}</p>
+    <div id="selectedProgramContainer">
+      <Link id={"selectedSectionBackButton"} to={`/programs`}>
+        Back to programs
+      </Link>
+      <section id="selectedProgramSection">
+        <img src={selectedProgram.programimage} alt="Program picture" id='selectedProgramImg'/>
+        <div id="selectedProgramInfo">
+          <p id="selectedProgramTitle">{selectedProgram.name}</p>
+          <p>{selectedProgram.description}</p>
+        </div>
+      </section>
     </div>
   );
 };

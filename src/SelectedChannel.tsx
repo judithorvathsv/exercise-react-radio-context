@@ -53,7 +53,7 @@ const SelectedChannel = ({ allChannels, selectedCategoryId }: ISelectedChannelPr
       </div>
     ));
   }
-  console.log(selectedChannel);
+
   return (
     <div id="selectedChannelContainer">
       <Link id={"selectedSectionBackButton"} to={`/`}>
