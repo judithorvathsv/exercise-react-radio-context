@@ -23,8 +23,8 @@ const Categories = ({ handleSelectedCategory }: ICategoryPops) => {
 
   //show category dropdown
   return (
-    <section>
-      <label>Category:</label>
+    <section id='categorySection'>
+      <label id='categoryLabel'>Program Category:</label>
       <select onChange={(e) => getSelectedCategory(e.target.value)}>
         <option key={0} value={0}>
           All

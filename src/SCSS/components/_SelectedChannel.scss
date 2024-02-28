@@ -1,0 +1,71 @@
+@use "../abstracts/colors";
+
+#selectedChannelContainer {
+  padding: 1rem;
+}
+
+#selectedSectionBackButton {
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+#selectedSectionBackButton:hover {
+  color: colors.$darkblue;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border: 1px solid colors.$darkblue;
+  background-color: white;
+}
+
+#selectedChannelSection {
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.selectedChannelWrapperDiv {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+#selectedChannelImg {
+  height: 16rem;
+  padding-right: 10%;
+}
+
+#selectedChannelInfo {
+  width: 40%;
+  color: white;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  font-weight: 200;
+  align-self: center;
+}
+
+#selectedChannelTitle {
+  font-size: 1.5rem;
+}
+
+hr {
+  margin-top: 1.5rem;
+}
+
+.selectedChannelProgramWrapper {
+  height: min-content;
+}
+
+#selectedChannelProgramTitle {
+  padding: 1rem 0 1rem 0;
+  color: white;
+  font-size: 1.5rem;
+}
+
+#content {
+  display: flex;
+  flex-wrap: wrap;
+}

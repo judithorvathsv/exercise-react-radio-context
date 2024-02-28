@@ -1,0 +1,6 @@
+@use "../abstracts/colors";
+
+html {
+  background-color: colors.$darkblue;
+  padding: 1rem;
+}

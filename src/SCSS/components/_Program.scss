@@ -1,0 +1,42 @@
+@use "../abstracts/colors";
+
+#programWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  background-color: black;
+  width: 14rem;
+  padding: 1rem;
+  height: 87%;
+  margin-bottom: 4rem;
+  overflow: auto;
+  overflow-x: hidden;
+  scrollbar-color: colors.$darkblue;
+  margin-right: 1rem;
+}
+
+#programImg {
+  width: 12rem;
+}
+
+#programInfo {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  width: 12rem;
+  color: white;
+  line-height: 1.2;
+}
+
+#programTitle {
+  font-size: 1.2rem;
+  margin-bottom: -1rem;
+}
+
+#programHr {
+  margin-bottom: 1rem;
+}
+
+#programDescription {
+  font-size: 0.8rem;
+}

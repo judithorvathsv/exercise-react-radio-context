@@ -4,6 +4,7 @@ import Program from "./Program";
 import Categories from "./Categories";
 import ProgramSearchInput from "./ProgramSearchInput";
 import { IOneProgramProps } from "./interfaces";
+import { Link } from "react-router-dom";
 
 export interface IProgramProps {
   getAllPrograms: (allPrograms: IOneProgramProps[]) => void;
@@ -74,7 +75,9 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
           searchedProgramName.length > 1 &&
           searchedPrograms!.map((program: any) => (
             <div>
-              <Program program={program} key={program.id} />
+              <Link to={`/programs/${program.id}`}>
+                <Program program={program} key={program.id} />
+              </Link>
             </div>
           ))}
       </div>
@@ -85,7 +88,9 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
           programs.length > 0 &&
           programs.map((program: any) => (
             <div>
-              <Program program={program} key={program.id} />
+              <Link to={`/programs/${program.id}`}>
+                <Program program={program} key={program.id} />
+              </Link>
             </div>
           ))}
       </div>
@@ -94,5 +99,3 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
 };
 
 export default Programs;
-
-

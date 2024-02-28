@@ -37,7 +37,6 @@ export interface IChannelsProps {
 
 export interface ISelectedChannelProps {
   allChannels: any;
-/*   handleSelectedCategory: (selectedOption: string) => void; */
   selectedCategoryId: string;
 }
 

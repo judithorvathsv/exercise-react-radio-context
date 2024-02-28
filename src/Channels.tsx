@@ -3,8 +3,7 @@ import Channel from "./Channel";
 import { IChannelProps, IChannelsProps } from "./interfaces";
 import { useEffect, useState } from "react";
 import { get } from "./http";
-
-
+import "./SCSS/main.scss";
 
 const Channels = ({ getAllChannels }: IChannelsProps) => {
   const [channels, setChannels] = useState<IChannelProps[]>();
@@ -23,16 +22,14 @@ const Channels = ({ getAllChannels }: IChannelsProps) => {
   }, []);
 
   return (
-    <div>
-      <div>
-        {channels !== undefined &&
-          channels.length > 0 &&
-          channels.map((channel: any) => (
-            <Link to={`/channels/${channel.id}`}>
-              <Channel channel={channel} key={channel.id} />
-            </Link>
-          ))}
-      </div>
+    <div className="channelWrapperDiv">
+      {channels !== undefined &&
+        channels.length > 0 &&
+        channels.map((channel: any) => (
+          <Link to={`/channels/${channel.id}`}>
+            <Channel channel={channel} key={channel.id} />
+          </Link>
+        ))}
     </div>
   );
 };

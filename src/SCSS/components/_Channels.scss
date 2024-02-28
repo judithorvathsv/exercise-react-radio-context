@@ -1,0 +1,11 @@
+@use "../abstracts/colors";
+
+.channelWrapperDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}

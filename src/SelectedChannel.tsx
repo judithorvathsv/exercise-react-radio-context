@@ -1,5 +1,4 @@
-import { useParams } from "react-router-dom";
-import Channel from "./Channel";
+import { Link, useParams } from "react-router-dom";
 import { ReactNode, useEffect, useState } from "react";
 import { get } from "./http";
 import { ISelectedChannelProps } from "./interfaces";
@@ -54,14 +53,28 @@ const SelectedChannel = ({ allChannels, selectedCategoryId }: ISelectedChannelPr
       </div>
     ));
   }
-
+  console.log(selectedChannel);
   return (
-    <>
-      <Channel channel={selectedChannel} />
+    <div id="selectedChannelContainer">
+      <Link id={"selectedSectionBackButton"} to={`/`}>
+        Back to channels
+      </Link>
+      <section id="selectedChannelSection">
+        <div id={selectedChannel.id} className="selectedChannelWrapperDiv">
+          <img src={selectedChannel.image} alt="Channel image" id="selectedChannelImg" />
+          <div id="selectedChannelInfo">
+            <p id="selectedChannelTitle">{selectedChannel.name}</p>
+            <p>{selectedChannel.tagline}</p>
+          </div>
+        </div>
+        <hr />
+      </section>
       <Categories handleSelectedCategory={handleSelectedCategory} />
-      <p>Programs</p>
-      <div>{content}</div>
-    </>
+      <p id="selectedChannelProgramTitle">Programs</p>
+      <div id="selectedChannelProgramWrapper">
+        <div id="content">{content}</div>
+      </div>
+    </div>
   );
 };
 

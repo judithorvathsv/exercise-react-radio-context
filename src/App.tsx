@@ -37,7 +37,6 @@ export function App() {
 }
 /*
 1.all the programs on a given channel during "today" and also be able to see what airs "tomorrow" and maybe some day later in the week.
-2.get information on a specific program.
-3.see when a specific program airs and on which channel.
-4.mark program as favorites that I can later view in a seperate view.
+2.see when a specific program airs and on which channel.
+3.mark program as favorites that I can later view in a seperate view.
 */
