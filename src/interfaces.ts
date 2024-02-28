@@ -4,6 +4,15 @@ export interface IRoute {
   path: string;
 }
 
+export interface IRoutingProps {
+  getAllChannels: (allChannels: any) => void;
+  getAllPrograms: (allPrograms: any) => void;
+  getSelectedCategoryId: (selectedCategory: string) => void;
+  allChannels: any;
+  allPrograms: any;
+  selectedCategoryId: string;
+}
+
 export interface IChannelProps {
   image: string;
   imagetemplate: string;
@@ -22,9 +31,14 @@ export interface IChannelProps {
   name: string;
 }
 
-export interface IProgramsProps {
-  allPrograms: any;
-  handleSelectedCategory: (selectedOption: string) => void;
+export interface IChannelsProps {
+  getAllChannels: (allChannels: any) => void;
+}
+
+export interface ISelectedChannelProps {
+  allChannels: any;
+/*   handleSelectedCategory: (selectedOption: string) => void; */
+  selectedCategoryId: string;
 }
 
 export interface IProgramProps {
@@ -34,6 +48,24 @@ export interface IProgramProps {
     name: string;
     description: string;
   };
+}
+
+export interface IOneProgramProps {
+  id: number;
+  programimage: string;
+  name: string;
+  description: string;
+}
+
+export interface ISearchedProgramProps {
+  id: number;
+  programimage: string;
+  name: string;
+  description: string;
+}
+
+export interface IProgramSearchInputProps {
+  handleSearchedProgram: (serachedName: string) => void;
 }
 
 export interface IProgramCategoryProps {

@@ -2,18 +2,15 @@ import { useParams } from "react-router-dom";
 import Channel from "./Channel";
 import { ReactNode, useEffect, useState } from "react";
 import { get } from "./http";
-import Programs from "./Programs";
+import { ISelectedChannelProps } from "./interfaces";
+import Program from "./Program";
+import Categories from "./Categories";
 
-const SelectedChannel = ({
-  allChannels,
-  handleSelectedCategory,
-  selectedCategoryId,
-}: {
-  allChannels: any;
-  handleSelectedCategory: any;
-  selectedCategoryId: string;
-}) => {
-  //set selected channel
+const SelectedChannel = ({ allChannels, selectedCategoryId }: ISelectedChannelProps) => {
+  const [programs, setPrograms] = useState(null);
+  const [newCategory, setNewCategory] = useState<string>("");
+
+  //set selected channel by url
   const params = useParams();
   const idFromUrl = params.id;
   let selectedChannel: any;
@@ -23,8 +20,16 @@ const SelectedChannel = ({
     }
   }
 
-  const [programs, setPrograms] = useState(null);
+  //change category
+  function handleSelectedCategory(categoryIdString: string) {
+    setNewCategory(categoryIdString);
+  }
+
   //fetch all programs for selected channel and filter by category if there is selected category
+  if (Number(newCategory) > 1) {
+    console.log(newCategory);
+    selectedCategoryId = newCategory;
+  }
   let url = `http://api.sr.se/api/v2/programs/index?channelid=${selectedChannel.id}&format=json`;
   if (Number(selectedCategoryId) > 0) {
     url = `http://api.sr.se/api/v2/programs/index?channelid=${selectedChannel.id}&programcategoryid=${selectedCategoryId}&format=json`;
@@ -41,16 +46,19 @@ const SelectedChannel = ({
     fetchPrograms().then((programs) => programs);
   }, [selectedCategoryId]);
 
-  //-----------------------------------
   let content: ReactNode;
   if (programs) {
-    content = <Programs allPrograms={programs} handleSelectedCategory={handleSelectedCategory} />;
+    content = programs.map((program: any) => (
+      <div>
+        <Program program={program} key={program.id} />
+      </div>
+    ));
   }
 
-  //---------------------------------------------
   return (
     <>
       <Channel channel={selectedChannel} />
+      <Categories handleSelectedCategory={handleSelectedCategory} />
       <p>Programs</p>
       <div>{content}</div>
     </>

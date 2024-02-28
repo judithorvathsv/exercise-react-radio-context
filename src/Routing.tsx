@@ -1,28 +1,23 @@
 import { Route, Routes } from "react-router-dom";
 import SelectedChannel from "./SelectedChannel";
-import Channel from "./Channel";
+import Programs from "./Programs";
+import Channels from "./Channels";
+import { IRoutingProps } from "./interfaces";
 
-const Routing = ({
-  content,
-  allChannels,
-  programcontent,
-  handleSelectedCategory,
-  selectedCategoryId,
-}: {
-  content: any;
-  allChannels: any;
-  programcontent: any;
-  handleSelectedCategory: any;
-  selectedCategoryId: string;
-}) => {
+const Routing = ({ getAllChannels, getAllPrograms, getSelectedCategoryId, allChannels, allPrograms, selectedCategoryId }: IRoutingProps) => {
   return (
     <Routes>
-      <Route
+      {/*       <Route
         path="/channels/:id"
         element={<SelectedChannel allChannels={allChannels} handleSelectedCategory={handleSelectedCategory} selectedCategoryId={selectedCategoryId} />}
+      /> */}
+      <Route
+        path="/channels/:id"
+        element={<SelectedChannel allChannels={allChannels} /* handleSelectedCategory={handleSelectedCategory} */ selectedCategoryId={selectedCategoryId} />}
       />
-      <Route path="/" element={<main>{content}</main>} />
-      <Route path="/programs" element={<main>{programcontent}</main>} />
+
+      <Route path="/programs" element={<Programs getAllPrograms={getAllPrograms} getSelectedCategoryId={getSelectedCategoryId} />} />
+      <Route path="/" element={<Channels getAllChannels={getAllChannels} />} />
     </Routes>
   );
 };

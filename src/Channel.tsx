@@ -1,11 +1,10 @@
+import { useParams } from "react-router-dom";
+
 const Channel = ({ channel }: any) => {
   return (
-    <>
-      <div>
-        <img src={channel.image} alt="Channel image" />
-      </div>
-      <div></div>
-    </>
+    <div id={channel.id}>
+      <img src={channel.image} alt="Channel image" />
+    </div>
   );
 };
 
