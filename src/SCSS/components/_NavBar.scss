@@ -10,9 +10,17 @@
   align-items: center;
 }
 
-#navBarImage {
+.navBarImage {
   width: 22rem;
   padding: 1rem;
+}
+
+#miniLogo {
+  display: none;
+}
+
+#longLogo {
+  display: flex;
 }
 
 #navLinkDiv {
@@ -36,4 +44,14 @@
   transform: scale(1.2);
   transition: 200ms ease-in;
   color: colors.$darkblue;
+}
+
+@media only screen and (max-width: 440px) {
+  #miniLogo {
+    display: flex;
+    width: 10rem;
+  }
+  #longLogo {
+    display: none;
+  }
 }

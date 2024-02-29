@@ -1,7 +1,13 @@
 @use "../abstracts/colors";
 
+#channelSection {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
 #channelsTitle {
-  padding-left: 1rem;
+  padding-bottom: 1rem;
   color: colors.$white;
 }
 
@@ -10,7 +16,25 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  padding: 1rem;
-/*   justify-content: space-between; */
   align-items: center;
+}
+
+.channelsGetMoreButton {
+  color: colors.$white;
+  background-color: colors.$darkblue;
+  border: 1px solid colors.$white;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 1rem;
+  margin-top: 1rem;
+  width: 15%;
+  align-self: center;
+  text-align: center;
+}
+
+.channelsGetMoreButton:hover {
+  color: colors.$darkblue;
+  border: 1px solid colors.$darkblue;
+  background-color: colors.$white;
 }

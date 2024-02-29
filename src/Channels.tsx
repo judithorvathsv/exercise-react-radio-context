@@ -7,22 +7,36 @@ import "./SCSS/main.scss";
 
 const Channels = ({ getAllChannels }: IChannelsProps) => {
   const [channels, setChannels] = useState<IChannelProps[]>();
+  const [page, setPage] = useState(1);
+  let channelArray: IChannelProps[] = [];
 
   //fetch channels
   useEffect(() => {
     async function fetchChannels() {
-      const data = (await get("https://api.sr.se/api/v2/channels?format=json")) as any;
+      const data = (await get(`https://api.sr.se/api/v2/channels?format=json&page=${page}`)) as any;
       const fetchedChannels: IChannelProps[] = data.channels.map((fetchedChannel: IChannelProps) => {
         return fetchedChannel;
       });
-      setChannels(fetchedChannels);
-      getAllChannels(fetchedChannels);
+
+      let oldFetchedChannels: any = channels;
+      if (channels == undefined) {
+        oldFetchedChannels = channelArray.concat(fetchedChannels);
+      }
+      oldFetchedChannels = oldFetchedChannels.concat(fetchedChannels);
+      setChannels(oldFetchedChannels);
+      getAllChannels(oldFetchedChannels);
     }
-    fetchChannels().then((channels) => channels);
-  }, []);
+
+    fetchChannels().then((fetched) => fetched);
+  }, [page]);
+
+  function handlePage(e: any) {
+    e.preventDefault();
+    page < 6 ? setPage(page + 1) : setPage(page);
+  }
 
   return (
-    <>
+    <section id="channelSection">
       <h2 id="channelsTitle">All Channels</h2>
       <div className="channelWrapperDiv">
         {channels !== undefined &&
@@ -33,7 +47,17 @@ const Channels = ({ getAllChannels }: IChannelsProps) => {
             </Link>
           ))}
       </div>
-    </>
+      {page < 6 && (
+        <button className="channelsGetMoreButton" onClick={(e) => handlePage(e)}>
+          Get More
+        </button>
+      )}
+      {page == 6 && (
+        <a type="button" className="channelsGetMoreButton" href="#channelSection">
+          Go to the top
+        </a>
+      )}
+    </section>
   );
 };
 

@@ -32,7 +32,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
     url = `http://api.sr.se/api/v2/programs${categoryParameter}`;
   }
 
-  //fetch program
+  //fetch program: max 82 oldal
   useEffect(() => {
     async function fetchPrograms() {
       const data = (await get(url)) as any;
