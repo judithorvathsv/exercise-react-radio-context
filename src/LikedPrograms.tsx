@@ -7,9 +7,9 @@ const LikedPrograms = ({ likedPrograms }: any) => {
 
   //if storage is not empty -> put in array for looping
   if (likedProgramsStorage !== undefined && likedProgramsStorage !== null) {
-    //get program objects from storage to an array
     let programValuesFromStorage = Object.values(likedProgramsFromStorage);
     programValuesFromStorage.forEach((program) => likedProgramsFromStorageArray.push(program));
+    console.log(likedProgramsFromStorageArray);
     likedPrograms = likedProgramsFromStorageArray;
   }
 

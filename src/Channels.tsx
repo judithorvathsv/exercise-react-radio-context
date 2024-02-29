@@ -48,12 +48,12 @@ const Channels = ({ getAllChannels }: IChannelsProps) => {
           ))}
       </div>
       {page < 6 && (
-        <button className="channelsGetMoreButton" onClick={(e) => handlePage(e)}>
+        <button className="getMoreButton" onClick={(e) => handlePage(e)}>
           Get More
         </button>
       )}
       {page == 6 && (
-        <a type="button" className="channelsGetMoreButton" href="#channelSection">
+        <a type="button" className="getMoreButton" href="#channelSection">
           Go to the top
         </a>
       )}

@@ -19,22 +19,4 @@
   align-items: center;
 }
 
-.channelsGetMoreButton {
-  color: colors.$white;
-  background-color: colors.$darkblue;
-  border: 1px solid colors.$white;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  padding: 1rem;
-  margin-top: 1rem;
-  width: 15%;
-  align-self: center;
-  text-align: center;
-}
 
-.channelsGetMoreButton:hover {
-  color: colors.$darkblue;
-  border: 1px solid colors.$darkblue;
-  background-color: colors.$white;
-}
