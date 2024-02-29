@@ -5,14 +5,14 @@
 }
 
 #programsTitle {
-  color: white;
+  color: colors.$white;
 }
 
 #searchWrapper {
   margin-top: 1rem;
   padding: 1rem;
-  color: white;
-  border: 1px solid wheat;
+  color: colors.$white;
+  border: 1px solid colors.$wheat;
   width: max-content;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   margin-bottom: 2rem;

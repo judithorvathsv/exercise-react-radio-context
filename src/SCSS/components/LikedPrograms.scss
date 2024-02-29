@@ -1,10 +1,11 @@
 @use "../abstracts/colors";
 
-#selectedProgramContainer {
+#favoriteContainer {
+  color: colors.$white;
   padding: 1rem;
 }
 
-#selectedProgramSection {
+#favoriteProgramSection {
   padding-top: 1rem;
   margin-top: 1rem;
   display: flex;
@@ -12,13 +13,11 @@
   color: colors.$white;
 }
 
-#selectedProgramImg {
+#favoriteProgramImg {
   padding-right: 10%;
-  max-width: 100%;
-  height: auto;
 }
 
-#selectedProgramInfo {
+#favoriteProgramInfo {
   width: 40%;
   color: colors.$white;
   line-height: 1.5;
@@ -26,6 +25,6 @@
   font-weight: 200;
 }
 
-#selectedProgramTitle {
+#favoriteProgramTitle {
   font-size: 1.5rem;
 }

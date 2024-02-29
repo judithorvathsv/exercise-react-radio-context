@@ -2,7 +2,7 @@
 
 #channelsTitle {
   padding-left: 1rem;
-  color: white;
+  color: colors.$white;
 }
 
 .channelWrapperDiv {
@@ -11,6 +11,6 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 1rem;
-  justify-content: space-between;
+/*   justify-content: space-between; */
   align-items: center;
 }

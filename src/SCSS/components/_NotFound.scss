@@ -1,0 +1,27 @@
+@use "../abstracts/colors";
+
+#notFoundSection {
+  margin: 1rem;
+}
+
+#notFoundDiv {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 85vh;
+  background-color: rgb(247, 247, 247);
+  color: black;
+  justify-content: center;
+}
+
+#notFoundText {
+  font-size: 2rem;
+  align-self: center;
+}
+
+#notFoundImg {
+  max-width: 15rem;
+  height: auto;
+  align-self: center;
+  margin-top: 2rem;
+}

@@ -9,7 +9,7 @@
   font-size: 1.2rem;
   text-decoration: none;
   border: 1px solid colors.$darkblue;
-  background-color: white;
+  background-color: colors.$white;
 }
 
 #selectedChannelSection {
@@ -30,7 +30,7 @@
 
 #selectedChannelInfo {
   width: 40%;
-  color: white;
+  color: colors.$white;
   line-height: 1.5;
   font-size: 1.2rem;
   font-weight: 200;
@@ -51,7 +51,7 @@ hr {
 
 #selectedChannelProgramTitle {
   padding: 1rem 0 1rem 0;
-  color: white;
+  color: colors.$white;
   font-size: 1.5rem;
 }
 

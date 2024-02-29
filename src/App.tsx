@@ -8,6 +8,7 @@ export function App() {
   const [allChannels, setAllChannels] = useState<any>();
   const [allPrograms, setAllPrograms] = useState<any>();
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("0");
+  const [likedPrograms, setLikedPrograms] = useState<IOneProgramProps[]>([]);
 
   function getAllChannels(allChannels: IChannelProps[]) {
     setAllChannels(allChannels);
@@ -21,6 +22,10 @@ export function App() {
     setSelectedCategoryId(selectedCategoryId);
   }
 
+  function getLikedPrograms(likedPrograms: IOneProgramProps[]) {
+    setLikedPrograms(likedPrograms);
+  }
+
   return (
     <BrowserRouter>
       <NavBar />
@@ -28,15 +33,22 @@ export function App() {
         getAllChannels={getAllChannels}
         getAllPrograms={getAllPrograms}
         getSelectedCategoryId={getSelectedCategoryId}
+        getLikedPrograms={getLikedPrograms}
         allChannels={allChannels}
         allPrograms={allPrograms}
         selectedCategoryId={selectedCategoryId}
+        likedPrograms={likedPrograms}
       />
     </BrowserRouter>
   );
 }
 /*
-1.all the programs on a given channel during "today" and also be able to see what airs "tomorrow" and maybe some day later in the week.
-2.see when a specific program airs and on which channel.
-3.mark program as favorites that I can later view in a seperate view.
+a list of all the channels. --ok??
+all the programs on a given channel during "today" and also be able to see what airs "tomorrow" and maybe some day later in the week.
+all the program that airs on a given channel. --ok ??
+a list of all the categories. --ok
+a list of all the programs in a given category. --ok
+search for a program. --ok
+get information on a specific program. --ok
+when a specific program airs and on which channel.
 */

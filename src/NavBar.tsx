@@ -4,7 +4,7 @@ const NavBar = () => {
   return (
     <div id="navDiv">
       <div>
-        <img src="./src/assets/radio.svg" alt="" id="navBarImage" />
+        <img src="/src/assets/radio.svg" alt="radio logo" id="navBarImage" />
       </div>
       <div id="navLinkDiv">
         <NavLink className={"navLink"} to={"/"}>
@@ -12,6 +12,9 @@ const NavBar = () => {
         </NavLink>
         <NavLink className={"navLink"} to={"/programs"}>
           Programs
+        </NavLink>
+        <NavLink className={"navLink"} to={"/programs/liked"}>
+          Favorites
         </NavLink>
       </div>
     </div>

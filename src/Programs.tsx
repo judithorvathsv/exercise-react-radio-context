@@ -9,13 +9,15 @@ import { Link } from "react-router-dom";
 export interface IProgramProps {
   getAllPrograms: (allPrograms: IOneProgramProps[]) => void;
   getSelectedCategoryId: (selectedCategoryId: string) => void;
+  getLikedPrograms: (likedPrograms: IOneProgramProps[]) => void;
 }
 
-const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
+const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: IProgramProps) => {
   const [programs, setPrograms] = useState<IOneProgramProps[]>([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("0");
   const [searchedProgramName, setSearchedProgramName] = useState<string>("");
   const [searchedPrograms, setSearchedPrograms] = useState<IOneProgramProps[]>([]);
+  const [likedPrograms, setLikedPrograms] = useState<IOneProgramProps[]>([]);
 
   //set selected category from Categories dropdown
   let handleSelectedCategory = (selectedCategoryId: string) => {
@@ -62,9 +64,25 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
         setSearchedPrograms(searchedProgramsArray);
       }
     }
-
     getSearchedPrograms();
   }, [searchedProgramName]);
+
+  //set liked Programs
+  function onSetLikedPrograms(likedProgram: IOneProgramProps) {
+    setLikedPrograms((prevLikedPrograms) => [...prevLikedPrograms, likedProgram]);
+  }
+
+  //set disliked Programs
+  function removeLikedPrograms(dislikedProgram: IOneProgramProps) {
+    setLikedPrograms((oldLikedPrograms) => {
+      return oldLikedPrograms.filter((program) => program !== dislikedProgram);
+    });
+  }
+
+  //send liked programs to App component.
+  useEffect(() => {
+    getLikedPrograms(likedPrograms as IOneProgramProps[]);
+  }, [likedPrograms]);
 
   return (
     <div id="programsContainer">
@@ -81,7 +99,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
           searchedPrograms!.map((program: any) => (
             <div>
               <Link to={`/programs/${program.id}`}>
-                <Program program={program} key={program.id} />
+                <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
               </Link>
             </div>
           ))}
@@ -94,7 +112,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId }: IProgramProps) => {
           programs.map((program: any) => (
             <div>
               <Link to={`/programs/${program.id}`}>
-                <Program program={program} key={program.id} />
+                <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
               </Link>
             </div>
           ))}
