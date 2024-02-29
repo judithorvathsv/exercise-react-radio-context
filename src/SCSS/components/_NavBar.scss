@@ -25,6 +25,7 @@
 
 #navLinkDiv {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
@@ -34,15 +35,16 @@
 .navLink {
   padding: 1rem;
   font-size: 1.5rem;
+  box-shadow: inset 0 0 0 0 colors.$darkblue;
   color: black;
+  font-weight: 700;
   text-decoration: none;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .navLink:hover {
-  padding: 1rem;
-  font-weight: bold;
-  transition: 200ms ease-in;
-  color: colors.$darkblue;
+  color: colors.$white;
+  box-shadow: inset 200px 0 0 0 colors.$darkblue;
 }
 
 @media only screen and (max-width: 440px) {
