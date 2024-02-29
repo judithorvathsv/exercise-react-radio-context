@@ -67,9 +67,50 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
     getSearchedPrograms();
   }, [searchedProgramName]);
 
+  //local storage data saving locally
+  function addOrRemoveProgramToLocalStorage(programToAddOrRemove: IOneProgramProps, isAdd: boolean) {
+    let likedProgramsStorage: any = localStorage.getItem("likedPrograsStorage");
+    let likedProgramsFromStorage = JSON.parse(likedProgramsStorage);
+    let likedProgramsFromStorageArray: any[] = [];
+
+    //if storage is not empty -> put in array for looping
+    if (likedProgramsStorage !== undefined && likedProgramsStorage !== null) {
+      //get program objects from storage to an array
+      let programValuesFromStorage = Object.values(likedProgramsFromStorage);
+      programValuesFromStorage.forEach((program) => likedProgramsFromStorageArray.push(program));
+      //adding new liked program, if it is not already added
+      if (isAdd) {
+        let isAlreadyAdded = false;
+        for (let i = 0; i < likedProgramsFromStorageArray.length; i++) {
+          if (likedProgramsFromStorageArray[i].id === programToAddOrRemove.id) {
+            isAlreadyAdded = true;
+          }
+        }
+        if (isAlreadyAdded == false) {
+          likedProgramsFromStorageArray.push(programToAddOrRemove);
+        }
+        localStorage.setItem("likedPrograsStorage", JSON.stringify(likedProgramsFromStorageArray));
+      }
+      //removing liked programs
+      else if (isAdd == false) {
+        for (let i = 0; i < likedProgramsFromStorageArray.length; i++) {
+          if (likedProgramsFromStorageArray[i].id === programToAddOrRemove.id) {
+            likedProgramsFromStorageArray.splice(i, 1);
+            localStorage.setItem("likedPrograsStorage", JSON.stringify(likedProgramsFromStorageArray));
+            break;
+          }
+        }
+      }
+    } else {
+      likedProgramsFromStorageArray.push(programToAddOrRemove);
+      localStorage.setItem("likedPrograsStorage", JSON.stringify(likedProgramsFromStorageArray));
+    }
+  }
+
   //set liked Programs
   function onSetLikedPrograms(likedProgram: IOneProgramProps) {
     setLikedPrograms((prevLikedPrograms) => [...prevLikedPrograms, likedProgram]);
+    addOrRemoveProgramToLocalStorage(likedProgram, true);
   }
 
   //set disliked Programs
@@ -77,6 +118,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
     setLikedPrograms((oldLikedPrograms) => {
       return oldLikedPrograms.filter((program) => program !== dislikedProgram);
     });
+    addOrRemoveProgramToLocalStorage(dislikedProgram, false);
   }
 
   //send liked programs to App component.
@@ -93,6 +135,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
         <ProgramSearchInput handleSearchedProgram={handleSearchedProgram} />
       </div>
 
+      {/* ----------- Show selected programs if: search, or dropdown---------- */}
       <div>
         {searchedPrograms !== null &&
           searchedProgramName.length > 1 &&
@@ -105,6 +148,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
           ))}
       </div>
 
+      {/* ----------- Show all programs if: no search, no dropdown---------- */}
       <div id="programsWrapper">
         {searchedProgramName == "" &&
           programs !== undefined &&

@@ -26,6 +26,8 @@ export function App() {
     setLikedPrograms(likedPrograms);
   }
 
+
+
   return (
     <BrowserRouter>
       <NavBar />
