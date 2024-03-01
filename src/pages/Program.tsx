@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { IProgramProps } from "./interfaces";
+import { IProgramProps } from "../interfaces";
 
 const Program = ({ program, setLikedPrograms, removeLikedPrograms }: IProgramProps) => {
   //get liked programs from local storage, give red heart for them

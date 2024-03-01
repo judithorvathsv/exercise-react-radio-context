@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { get } from "./http";
+import { get } from "../http";
 import Program from "./Program";
 import Categories from "./Categories";
 import ProgramSearchInput from "./ProgramSearchInput";
-import { IOneProgramProps } from "./interfaces";
+import { IOneProgramProps } from "../interfaces";
 import { Link } from "react-router-dom";
 
 const Programs = () => {

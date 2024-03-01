@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ICategoryPops, IProgramCategoryProps } from "./interfaces";
-import { get } from "./http";
+import { ICategoryPops, IProgramCategoryProps } from "../interfaces";
+import { get } from "../http";
 
 const Categories = ({ handleSelectedCategory }: ICategoryPops) => {
   const [categories, setCategories] = useState<IProgramCategoryProps[]>();

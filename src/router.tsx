@@ -1,11 +1,11 @@
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import { App } from "./App";
-import Channels from "./Channels";
-import SelectedChannel from "./SelectedChannel";
-import Programs from "./Programs";
-import SelectedProgram from "./SelectedProgram";
-import LikedPrograms from "./LikedPrograms";
-import NotFound from "./NotFound";
+import Channels from "./pages/Channels";
+import SelectedChannel from "./pages/SelectedChannel";
+import Programs from "./pages/Programs";
+import SelectedProgram from "./pages/SelectedProgram";
+import LikedPrograms from "./pages/LikedPrograms";
+import NotFound from "./pages/NotFound";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

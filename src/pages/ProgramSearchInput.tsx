@@ -1,4 +1,4 @@
-import { IProgramSearchInputProps } from "./interfaces";
+import { IProgramSearchInputProps } from "../interfaces";
 
 const ProgramSearchInput = ({ handleSearchedProgram }: IProgramSearchInputProps) => {
   function getSearchedProgram(serachedName: string) {
