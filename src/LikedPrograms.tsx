@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
-const LikedPrograms = ({ likedPrograms }: any) => {
+const LikedPrograms = () => {
   let likedProgramsStorage: any = localStorage.getItem("likedPrograsStorage");
   let likedProgramsFromStorage = JSON.parse(likedProgramsStorage);
   let likedProgramsFromStorageArray: any[] = [];
+  let likedPrograms: any[] = [];
 
   //if storage is not empty -> put in array for looping
   if (likedProgramsStorage !== undefined && likedProgramsStorage !== null) {

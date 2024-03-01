@@ -1,23 +1,16 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactNode, useEffect, useState } from "react";
 import { get } from "./http";
-import { ISelectedChannelProps } from "./interfaces";
 import Program from "./Program";
 import Categories from "./Categories";
 
-const SelectedChannel = ({ allChannels, selectedCategoryId }: ISelectedChannelProps) => {
-  const [programs, setPrograms] = useState(null);
+const SelectedChannel = () => {
+  const [programs, setPrograms] = useState([]);
   const [newCategory, setNewCategory] = useState<string>("");
 
-  //set selected channel by url
-  const params = useParams();
-  const idFromUrl = params.id;
-  let selectedChannel: any;
-  for (let i = 0; i < allChannels.length; i++) {
-    if (allChannels[i].id == idFromUrl) {
-      selectedChannel = allChannels[i];
-    }
-  }
+  let selectedCategoryId = localStorage.getItem("selectedCategoryIdStorage");
+  const location = useLocation();
+  const { channel } = location.state;
 
   //change category
   function handleSelectedCategory(categoryIdString: string) {
@@ -29,9 +22,9 @@ const SelectedChannel = ({ allChannels, selectedCategoryId }: ISelectedChannelPr
     console.log(newCategory);
     selectedCategoryId = newCategory;
   }
-  let url = `http://api.sr.se/api/v2/programs/index?channelid=${selectedChannel.id}&format=json`;
+  let url = `http://api.sr.se/api/v2/programs/index?channelid=${channel.id}&format=json`;
   if (Number(selectedCategoryId) > 0) {
-    url = `http://api.sr.se/api/v2/programs/index?channelid=${selectedChannel.id}&programcategoryid=${selectedCategoryId}&format=json`;
+    url = `http://api.sr.se/api/v2/programs/index?channelid=${channel.id}&programcategoryid=${selectedCategoryId}&format=json`;
   }
 
   useEffect(() => {
@@ -48,9 +41,11 @@ const SelectedChannel = ({ allChannels, selectedCategoryId }: ISelectedChannelPr
   let content: ReactNode;
   if (programs) {
     content = programs.map((program: any) => (
-      <div>
-        <Program program={program} key={program.id} />
-      </div>
+      <Link to={`/programs/${program.id}`} state={{ program: program }}>
+        <div>
+          <Program program={program} key={program.id} />
+        </div>
+      </Link>
     ));
   }
 
@@ -60,14 +55,14 @@ const SelectedChannel = ({ allChannels, selectedCategoryId }: ISelectedChannelPr
         Tillbaka till kanaler
       </Link>
       <section id="selectedChannelSection">
-        <div id={selectedChannel.id} className="selectedChannelWrapperDiv">
-          <img src={selectedChannel.image} alt="Channel image" id="selectedChannelImg" />
+        <div id={channel.id} className="selectedChannelWrapperDiv">
+          <img src={channel.image} alt="Channel image" id="selectedChannelImg" />
           <div id="selectedChannelInfo">
-            <p id="selectedChannelTitle">{selectedChannel.name}</p>
-            <p >{selectedChannel.tagline}</p>
+            <p id="selectedChannelTitle">{channel.name}</p>
+            <p>{channel.tagline}</p>
             <figure>
-              <figcaption>Lyssna på {selectedChannel.name}:</figcaption>
-              <audio controls src={selectedChannel.liveaudio.url}></audio>
+              <figcaption>Lyssna på {channel.name}:</figcaption>
+              <audio controls src={channel.liveaudio.url}></audio>
             </figure>
           </div>
         </div>

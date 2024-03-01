@@ -7,12 +7,10 @@ import { IOneProgramProps } from "./interfaces";
 import { Link } from "react-router-dom";
 
 export interface IProgramProps {
-  getAllPrograms: (allPrograms: IOneProgramProps[]) => void;
-  getSelectedCategoryId: (selectedCategoryId: string) => void;
   getLikedPrograms: (likedPrograms: IOneProgramProps[]) => void;
 }
 
-const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: IProgramProps) => {
+const Programs = () => {
   const [programs, setPrograms] = useState<IOneProgramProps[]>([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("0");
   const [searchedProgramName, setSearchedProgramName] = useState<string>("");
@@ -24,7 +22,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
   //set selected category from Categories dropdown
   let handleSelectedCategory = (selectedCategoryId: string) => {
     setSelectedCategoryId(selectedCategoryId);
-    getSelectedCategoryId(selectedCategoryId);
+    localStorage.setItem("selectedCategoryIdStorage", selectedCategoryId);
   };
 
   //fetch all programs and filter by category if there is selected category
@@ -54,7 +52,6 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
         oldFetchedPrograms = oldFetchedPrograms.concat(fetchedPrograms);
       }
       setPrograms(oldFetchedPrograms);
-      getAllPrograms(oldFetchedPrograms);
     }
     fetchPrograms().then((programs) => programs);
   }, [page]);
@@ -68,7 +65,6 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
       });
 
       setPrograms(fetchedPrograms);
-      getAllPrograms(fetchedPrograms);
     }
     fetchPrograms().then((programs) => programs);
   }, [selectedCategoryId]);
@@ -77,7 +73,6 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
   function handleSearchedProgram(searchedProgramName: string) {
     setSearchedProgramName(searchedProgramName);
   }
-
   //searched program
   useEffect(() => {
     let searchedProgramsArray: IOneProgramProps[] = [];
@@ -152,9 +147,9 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
   }
 
   //send liked programs to App component.
-  useEffect(() => {
+/*   useEffect(() => {
     getLikedPrograms(likedPrograms as IOneProgramProps[]);
-  }, [likedPrograms]);
+  }, [likedPrograms]); */
 
   return (
     <div id="programsContainer">
@@ -171,7 +166,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
           searchedProgramName.length > 1 &&
           searchedPrograms!.map((program: any) => (
             <div>
-              <Link to={`/programs/${program.id}`}>
+              <Link to={`/programs/${program.id}`} state={{ program: program }}>
                 <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
               </Link>
             </div>
@@ -185,7 +180,7 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
           programs.length > 0 &&
           programs.map((program: any) => (
             <div>
-              <Link to={`/programs/${program.id}`}>
+              <Link to={`/programs/${program.id}`} state={{ program: program }}>
                 <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
               </Link>
             </div>
@@ -198,7 +193,8 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
       )}
 
       <a type="button" className="getMoreButton" href="#programsContainer">
-        Go till toppen     </a>
+        Gå till toppen{" "}
+      </a>
     </div>
   );
 };

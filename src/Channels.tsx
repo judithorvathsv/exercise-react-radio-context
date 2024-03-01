@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import Channel from "./Channel";
-import { IChannelProps, IChannelsProps } from "./interfaces";
+import { IChannelProps } from "./interfaces";
 import { useEffect, useState } from "react";
 import { get } from "./http";
 import "./SCSS/main.scss";
 
-const Channels = ({ getAllChannels }: IChannelsProps) => {
+const Channels = () => {
   const [channels, setChannels] = useState<IChannelProps[]>();
   const [page, setPage] = useState(1);
   let channelArray: IChannelProps[] = [];
@@ -24,7 +24,6 @@ const Channels = ({ getAllChannels }: IChannelsProps) => {
       }
       oldFetchedChannels = oldFetchedChannels.concat(fetchedChannels);
       setChannels(oldFetchedChannels);
-      getAllChannels(oldFetchedChannels);
     }
 
     fetchChannels().then((fetched) => fetched);
@@ -42,7 +41,7 @@ const Channels = ({ getAllChannels }: IChannelsProps) => {
         {channels !== undefined &&
           channels.length > 0 &&
           channels.map((channel: any) => (
-            <Link to={`/channels/${channel.id}`}>
+            <Link to={`/channels/${channel.id}`} state={{ channel: channel }}>
               <Channel channel={channel} key={channel.id} />
             </Link>
           ))}
@@ -54,7 +53,7 @@ const Channels = ({ getAllChannels }: IChannelsProps) => {
       )}
       {page == 6 && (
         <a type="button" className="getMoreButton" href="#channelSection">
-          Go till toppen
+          Gå till toppen
         </a>
       )}
     </section>

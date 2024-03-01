@@ -5,13 +5,7 @@ export interface IRoute {
 }
 
 export interface IRoutingProps {
-  getAllChannels: (allChannels: any) => void;
-  getAllPrograms: (allPrograms: any) => void;
-  getSelectedCategoryId: (selectedCategory: string) => void;
   getLikedPrograms: (likedPrograms: any) => void;
-  allChannels: any;
-  allPrograms: any;
-  selectedCategoryId: string;
   likedPrograms: IOneProgramProps[];
 }
 
