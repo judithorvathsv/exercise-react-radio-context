@@ -46,4 +46,5 @@ export function App() {
 all the programs on a given channel during "today" and also be able to see what airs "tomorrow" and maybe some day later in the week.
 get information on a specific program. --ok
 when a specific program airs and on which channel.
+selectedProgram info + favoriteprogram info -> ny component?
 */

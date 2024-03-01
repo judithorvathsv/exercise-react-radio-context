@@ -37,11 +37,6 @@ const SelectedProgram = ({ allPrograms }: any) => {
             <a href={selectedProgram.socialmediaplatforms[1].platformurl}>
               <img src="/src/assets/twitterLogo.png" alt="twitter logo" className="socailMediaIcons" id="twitterLogo" />
             </a>
-
-            <figure>
-              {/* <figcaption>Lyssna på {selectedProgram.name}:</figcaption> */}
-              {/* <audio controls src={selectedProgram.liveaudio.url}></audio> */}
-            </figure>
           </div>
         </section>
       </div>
