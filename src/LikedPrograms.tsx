@@ -16,7 +16,7 @@ const LikedPrograms = ({ likedPrograms }: any) => {
   if (likedPrograms.length == 0) {
     return (
       <div id="favoriteContainer">
-        <h2 id="favoriteProgramsTitle">Your Favorite Programs:</h2>
+        <h2 id="favoriteProgramsTitle">Dina favoritprogram:</h2>
         <p>You don't have any favorite program</p>
       </div>
     );
@@ -24,7 +24,7 @@ const LikedPrograms = ({ likedPrograms }: any) => {
 
   return (
     <div id="favoriteContainer">
-      <h2 id="favoriteProgramsTitle">Your Favorite Programs:</h2>
+      <h2 id="favoriteProgramsTitle">Dina favoritprogram:</h2>
       <div>
         {likedPrograms !== undefined &&
           likedPrograms.length > 0 &&

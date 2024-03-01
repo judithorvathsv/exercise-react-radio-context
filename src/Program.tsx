@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { IProgramProps } from "./interfaces";
 
 const Program = ({ program, setLikedPrograms, removeLikedPrograms }: IProgramProps) => {
@@ -34,7 +34,7 @@ const Program = ({ program, setLikedPrograms, removeLikedPrograms }: IProgramPro
       let heartImage = document.getElementById(heartId)!;
       heartImage.style.display = "inline-block";
 
-      setLikedPrograms(program);
+      setLikedPrograms!(program);
     }
   }
   //dislike program
@@ -49,7 +49,7 @@ const Program = ({ program, setLikedPrograms, removeLikedPrograms }: IProgramPro
       let heartImage = document.getElementById(heartId)!;
       heartImage.style.display = "none";
 
-      removeLikedPrograms(program);
+      removeLikedPrograms!(program);
     }
   }
 

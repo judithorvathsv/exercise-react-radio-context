@@ -24,10 +24,10 @@ const Categories = ({ handleSelectedCategory }: ICategoryPops) => {
   //show category dropdown
   return (
     <section id="categorySection">
-      <label id="categoryLabel">Program Category</label>
+      <label id="categoryLabel">Program kategori</label>
       <select onChange={(e) => getSelectedCategory(e.target.value)}>
         <option key={0} value={0}>
-          All
+          Alla
         </option>
         {categories?.map((category: any) => (
           <option key={category.id} value={category.id}>

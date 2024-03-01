@@ -6,8 +6,10 @@ const ProgramSearchInput = ({ handleSearchedProgram }: IProgramSearchInputProps)
   }
 
   return (
-    <div id='inputDiv'>
-      <label id='programInputLabel' htmlFor="programInputField">Search by program name</label>
+    <div id="inputDiv">
+      <label id="programInputLabel" htmlFor="programInputField">
+        Sök efter programnamn
+      </label>
       <input id="programInputField" type="text" onChange={(e) => getSearchedProgram(e.currentTarget.value)} />
     </div>
   );

@@ -57,20 +57,24 @@ const SelectedChannel = ({ allChannels, selectedCategoryId }: ISelectedChannelPr
   return (
     <div id="selectedChannelContainer">
       <Link id={"selectedSectionBackButton"} to={`/`}>
-        Back to channels
+        Tillbaka till kanaler
       </Link>
       <section id="selectedChannelSection">
         <div id={selectedChannel.id} className="selectedChannelWrapperDiv">
           <img src={selectedChannel.image} alt="Channel image" id="selectedChannelImg" />
           <div id="selectedChannelInfo">
             <p id="selectedChannelTitle">{selectedChannel.name}</p>
-            <p>{selectedChannel.tagline}</p>
+            <p >{selectedChannel.tagline}</p>
+            <figure>
+              <figcaption>Lyssna på {selectedChannel.name}:</figcaption>
+              <audio controls src={selectedChannel.liveaudio.url}></audio>
+            </figure>
           </div>
         </div>
         <hr />
       </section>
       <Categories handleSelectedCategory={handleSelectedCategory} />
-      <p id="selectedChannelProgramTitle">Programs</p>
+      <p id="selectedChannelProgramTitle">Program</p>
       <div id="selectedChannelProgramWrapper">
         <div id="content">{content}</div>
       </div>

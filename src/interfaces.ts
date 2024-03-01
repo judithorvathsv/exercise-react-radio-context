@@ -44,8 +44,8 @@ export interface ISelectedChannelProps {
 
 export interface IProgramProps {
   program: IOneProgramProps;
-  setLikedPrograms: (program: IOneProgramProps) => void;
-  removeLikedPrograms: (program: IOneProgramProps) => void;
+  setLikedPrograms?: (program: IOneProgramProps) => void;
+  removeLikedPrograms?: (program: IOneProgramProps) => void;
 }
 
 export interface IOneProgramProps {

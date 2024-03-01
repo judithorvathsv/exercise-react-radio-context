@@ -11,13 +11,13 @@ const NavBar = () => {
       </div>
       <div id="navLinkDiv">
         <NavLink className={"navLink"} to={"/"}>
-          Channels
+          Kanaler
         </NavLink>
         <NavLink className={"navLink"} to={"/programs"}>
-          Programs
+          Program
         </NavLink>
         <NavLink className={"navLink"} to={"/programs/liked"}>
-          Favorites
+          Favoriter
         </NavLink>
       </div>
     </div>

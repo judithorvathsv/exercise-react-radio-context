@@ -37,7 +37,7 @@ const Channels = ({ getAllChannels }: IChannelsProps) => {
 
   return (
     <section id="channelSection">
-      <h2 id="channelsTitle">All Channels</h2>
+      <h2 id="channelsTitle">Alla kanaler</h2>
       <div className="channelWrapperDiv">
         {channels !== undefined &&
           channels.length > 0 &&
@@ -49,12 +49,12 @@ const Channels = ({ getAllChannels }: IChannelsProps) => {
       </div>
       {page < 6 && (
         <button className="getMoreButton" onClick={(e) => handlePage(e)}>
-          Get More
+          Få mer
         </button>
       )}
       {page == 6 && (
         <a type="button" className="getMoreButton" href="#channelSection">
-          Go to the top
+          Go till toppen
         </a>
       )}
     </section>

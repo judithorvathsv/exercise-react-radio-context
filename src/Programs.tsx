@@ -158,9 +158,9 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
 
   return (
     <div id="programsContainer">
-      <h2 id="programsTitle">All Programs</h2>
+      <h2 id="programsTitle">Alla Program</h2>
       <div id="searchWrapper">
-        <h3>Search in Programs</h3>
+        <h3>Sök i Program</h3>
         <Categories handleSelectedCategory={handleSelectedCategory} />
         <ProgramSearchInput handleSearchedProgram={handleSearchedProgram} />
       </div>
@@ -193,13 +193,12 @@ const Programs = ({ getAllPrograms, getSelectedCategoryId, getLikedPrograms }: I
       </div>
       {page < 82 && (
         <button className="getMoreButton" onClick={(e) => handleProgramPage(e)}>
-          Get More
+          Få mer
         </button>
       )}
 
       <a type="button" className="getMoreButton" href="#programsContainer">
-        Go to the top
-      </a>
+        Go till toppen     </a>
     </div>
   );
 };
