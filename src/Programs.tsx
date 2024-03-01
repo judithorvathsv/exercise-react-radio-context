@@ -6,16 +6,11 @@ import ProgramSearchInput from "./ProgramSearchInput";
 import { IOneProgramProps } from "./interfaces";
 import { Link } from "react-router-dom";
 
-export interface IProgramProps {
-  getLikedPrograms: (likedPrograms: IOneProgramProps[]) => void;
-}
-
 const Programs = () => {
   const [programs, setPrograms] = useState<IOneProgramProps[]>([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("0");
   const [searchedProgramName, setSearchedProgramName] = useState<string>("");
   const [searchedPrograms, setSearchedPrograms] = useState<IOneProgramProps[]>([]);
-  const [likedPrograms, setLikedPrograms] = useState<IOneProgramProps[]>([]);
   const [page, setPage] = useState(1);
   let programArray: IOneProgramProps[] = [];
 
@@ -134,22 +129,13 @@ const Programs = () => {
 
   //set liked Programs
   function onSetLikedPrograms(likedProgram: IOneProgramProps) {
-    setLikedPrograms((prevLikedPrograms) => [...prevLikedPrograms, likedProgram]);
     addOrRemoveProgramToLocalStorage(likedProgram, true);
   }
 
   //set disliked Programs
   function removeLikedPrograms(dislikedProgram: IOneProgramProps) {
-    setLikedPrograms((oldLikedPrograms) => {
-      return oldLikedPrograms.filter((program) => program !== dislikedProgram);
-    });
     addOrRemoveProgramToLocalStorage(dislikedProgram, false);
   }
-
-  //send liked programs to App component.
-/*   useEffect(() => {
-    getLikedPrograms(likedPrograms as IOneProgramProps[]);
-  }, [likedPrograms]); */
 
   return (
     <div id="programsContainer">
