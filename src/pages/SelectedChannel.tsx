@@ -51,22 +51,25 @@ const SelectedChannel = () => {
 
   return (
     <div id="selectedChannelContainer">
-      <Link id={"selectedSectionBackButton"} to={`/`}>
+      <Link className={"selectedSectionBackButton"} to={`/`}>
         Tillbaka till kanaler
       </Link>
+
       <section id="selectedChannelSection">
-        <div id={channel.id} className="selectedChannelWrapperDiv">
-          <img src={channel.image} alt="Channel image" id="selectedChannelImg" />
-          <div id="selectedChannelInfo">
-            <p id="selectedChannelTitle">{channel.name}</p>
-            <p>{channel.tagline}</p>
-            <figure>
-              <figcaption>Lyssna på {channel.name}:</figcaption>
-              <audio controls src={channel.liveaudio.url}></audio>
-            </figure>
+        <a href={channel.siteurl}>
+          <div id={channel.id} className="selectedChannelWrapperDiv">
+            <img src={channel.image} alt="Channel image" id="selectedChannelImg" />
+            <div id="selectedChannelInfo">
+              <p id="selectedChannelTitle">{channel.name}</p>
+              <p>{channel.tagline}</p>
+              <figure id="audioWrapper">
+                <figcaption>Lyssna på {channel.name}:</figcaption>
+                <audio controls src={channel.liveaudio.url}></audio>
+              </figure>
+            </div>
           </div>
-        </div>
-        <hr />
+          <hr />
+        </a>
       </section>
 
       <Categories handleSelectedCategory={handleSelectedCategory} />
@@ -74,7 +77,7 @@ const SelectedChannel = () => {
       <p id="selectedChannelProgramTitle">Program</p>
 
       <div id="selectedChannelProgramWrapper">
-        <div id="content">{content}</div>
+        <div id="programContent">{content}</div>
       </div>
     </div>
   );

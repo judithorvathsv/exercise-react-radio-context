@@ -68,3 +68,30 @@ export interface IProgramCategoryProps {
 export interface ICategoryPops {
   handleSelectedCategory: (selectedOption: string) => void;
 }
+
+export interface IBroadcastProps {
+  id: number;
+  title: string;
+  description: string;
+  broadcastdateutc: string;
+  totalduration: number;
+  image: string;
+  imagetemplate: string;
+  availablestoputc: string;
+  playlist: {
+    duration: number;
+    publishdateutc: string;
+    id: number;
+    url: string;
+    statkey: string;
+  };
+  broadcastfiles: [
+    {
+      duration: number;
+      publishdateutc: string;
+      id: number;
+      url: string;
+      statkey: string;
+    }
+  ];
+}

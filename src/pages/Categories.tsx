@@ -25,7 +25,7 @@ const Categories = ({ handleSelectedCategory }: ICategoryPops) => {
   return (
     <section id="categorySection">
       <label id="categoryLabel">Program kategori</label>
-      <select onChange={(e) => getSelectedCategory(e.target.value)}>
+      <select onChange={(e) => getSelectedCategory(e.target.value)} id='categorySelectBox'>
         <option key={0} value={0}>
           Alla
         </option>

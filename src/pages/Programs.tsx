@@ -151,11 +151,9 @@ const Programs = () => {
         {searchedPrograms !== null &&
           searchedProgramName.length > 1 &&
           searchedPrograms!.map((program: any) => (
-            <div>
-              <Link to={`/programs/${program.id}`} state={{ program: program }}>
-                <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
-              </Link>
-            </div>
+            <Link to={`/programs/${program.id}`} state={{ program: program }}>
+              <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
+            </Link>
           ))}
       </div>
 
@@ -165,11 +163,9 @@ const Programs = () => {
           programs !== undefined &&
           programs.length > 0 &&
           programs.map((program: any) => (
-            <div>
-              <Link to={`/programs/${program.id}`} state={{ program: program }}>
-                <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
-              </Link>
-            </div>
+            <Link to={`/programs/${program.id}`} state={{ program: program }}>
+              <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
+            </Link>
           ))}
       </div>
       {page < 82 && (

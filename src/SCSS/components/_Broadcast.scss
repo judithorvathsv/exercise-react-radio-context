@@ -1,0 +1,119 @@
+@use "../abstracts/colors";
+
+#broadcastWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem 1rem 1rem 0;
+  height: fit-content;
+  width: fit-content;
+  overflow: auto;
+  overflow-x: hidden;
+  scrollbar-color: colors.$darkblue;
+  color: white;
+  background-color: black;
+}
+
+#broadcastContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 43vw;
+  padding: 1rem;
+}
+
+#broadcastImgWrapper {
+  width: 8rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 4rem;
+  padding-top: 3rem;
+}
+
+#broadcastImg {
+  position: absolute;
+  width: 6.5rem;
+  height: 6.5rem;
+  object-fit: cover;
+}
+
+#broadcastInfo {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: fit-content;
+  width: 21rem;
+  margin-right: 1rem;
+  padding-right: 1rem;
+}
+
+#broadcastTitle {
+  font-size: 1.2rem;
+  margin-bottom: -1rem;
+}
+
+#broadcastHr {
+  margin-bottom: 1rem;
+}
+
+#broadcastInfoText {
+  width: 100%;
+  line-height: 1.5;
+  margin-left: 1rem;
+}
+
+#broadcastAudioWrapper {
+  min-width: 8rem;
+}
+
+#broadcastAudio {
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 822px) {
+  #broadcastWrapper {
+    margin: 0 0 1rem 0;
+    width: 100%;
+    height: fit-content;
+  }
+
+  #broadcastContainer {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+  }
+
+  #broadcastInfo {
+    width: 100%;
+    height: fit-content;
+  }
+
+  #broadcastTitle {
+    margin-top: 1rem;
+  }
+
+  div#broadcastAudioWrapper {
+    display: grid;
+    grid-template-areas: "audio";
+    grid-template-columns: 1rem;
+    padding-top: 0.5rem;
+    padding-left: 0rem;
+  }
+
+  #broadcastAudio {
+    margin-top: 1rem;
+    margin: 0;
+    grid-area: "audio";
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  #broadcastAudioWrapper {
+    padding: 0rem 0rem 0rem 2rem;
+    display: flex;
+  }
+  #broadcastAudio {
+    width: 5rem;
+    height: 6rem;
+  }
+}

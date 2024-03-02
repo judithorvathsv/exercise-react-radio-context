@@ -18,7 +18,7 @@
   height: auto;
 }
 
-#selectedProgramInfo {
+#selectedProgramInfoWrapper {
   width: 40%;
   color: colors.$white;
   line-height: 1.5;
@@ -36,6 +36,9 @@
 
 .selectedProgramInfo {
   margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-all;
 }
 
 .socailMediaIcons {
@@ -46,4 +49,43 @@
 #facebookLogo {
   height: 4rem;
   margin: 0 2rem -0.4rem 0;
+}
+
+#broadcastPoddButtons {
+  display: flex;
+}
+
+#programAllBroadCasts {
+  width: 100%;
+}
+
+#broadcastPoddButtons {
+  width: 15rem;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 1100px) {
+#selectedProgramInfoWrapper{
+  width: 100%;
+}
+}
+
+@media only screen and (max-width: 440px) {
+  #selectedProgramContainer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #selectedProgramSocialMediaIcons {
+    display: flex;
+  }
+
+  #selectedProgramInfo {
+    width: 90%;
+  }
+
+  #broadcastPoddButtons {
+    margin-bottom: 1rem;
+  }
 }

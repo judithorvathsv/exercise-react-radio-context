@@ -7,14 +7,21 @@
   font-family: sans-serif;
 }
 
-#selectedSectionBackButton {
+.selectedSectionBackButton {
   color: colors.$white;
+  background-color: colors.$darkblue;
   font-size: 1.2rem;
   text-decoration: none;
   border: 1px solid colors.$white;
   padding: 1rem;
   border-radius: 5px;
   margin-top: 1rem;
+}
+
+.selectedSectionBackButton:hover {
+  color: colors.$darkblue;
+  border: 1px solid colors.$darkblue;
+  background-color: colors.$white;
 }
 
 .getMoreButton {

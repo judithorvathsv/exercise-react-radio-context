@@ -30,3 +30,13 @@
 #favoriteProgramTitle {
   font-size: 1.5rem;
 }
+
+@media only screen and (max-width: 1104px) {
+  #favoriteProgramInfo {
+    width: 100%;
+  }
+
+  #favoriteProgramTitle {
+    margin-top: 1rem;
+  }
+}
