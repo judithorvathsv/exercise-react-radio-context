@@ -9,8 +9,8 @@
   overflow: auto;
   overflow-x: hidden;
   scrollbar-color: colors.$darkblue;
-  color: white;
-  background-color: black;
+  color: colors.$white;
+  background-color: colors.$black;
 }
 
 #broadcastContainer {

@@ -33,12 +33,12 @@ const BroadcastPoddSwitchPanel = ({ program }: any) => {
     <section id="programAllBroadCasts">
       <div id="broadcastPoddButtons">
         {program.hasondemand == true && (
-          <button id="getBroadcastButton" className="selectedSectionBackButton" onClick={() => handleTab("makeItBroadcast")}>
+          <button id="getBroadcastButton" className="selectedSectionBackButton broadcastPodButtons" onClick={() => handleTab("makeItBroadcast")}>
             Sändningar
           </button>
         )}
         {program.haspod == true && (
-          <button id="getPoddButton" className="selectedSectionBackButton" onClick={() => handleTab("makeItPodds")}>
+          <button id="getPoddButton" className="selectedSectionBackButton broadcastPodButtons" onClick={() => handleTab("makeItPodds")}>
             Poddar
           </button>
         )}

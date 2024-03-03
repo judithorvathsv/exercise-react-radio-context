@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <div id="navDiv">
+    <div id="navDiv" className="fixed-top">
       <div id="miniLogo">
         <img src="/src/assets/logo.svg" alt="radio logo" className="navBarImage" />
       </div>

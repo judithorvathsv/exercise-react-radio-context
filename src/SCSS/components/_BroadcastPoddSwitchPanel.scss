@@ -1,0 +1,11 @@
+@use "../abstracts/colors";
+
+#getBroadcastButton {
+  background-color: colors.$white;
+  color: colors.$darkblue;
+}
+
+.broadcastPodButtons:hover {
+  background-color: colors.$lightblue !important;
+  color: colors.$black !important;
+}
