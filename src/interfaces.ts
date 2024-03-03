@@ -95,3 +95,19 @@ export interface IBroadcastProps {
     }
   ];
 }
+
+export interface IPodcastProps {
+  title: string;
+  description: string;
+  filesizeinbytes: number;
+  program: {
+    id: number;
+    name: string;
+  };
+  availablefromutc: string;
+  duration: number;
+  publishdateutc: string;
+  id: number;
+  url: string;
+  statkey: string;
+}

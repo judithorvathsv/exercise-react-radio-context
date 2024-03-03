@@ -1,37 +1,7 @@
+import { getCorrectedTite } from "../utilities/nameFormat";
+import { utcTimeToDate } from "../utilities/utcDateConvert";
+
 const Broadcast = ({ broadcast }: any) => {
-  //give correct title
-  function getCorrectedTite(title: string) {
-    let lastSpaceIndexInTitle = title.lastIndexOf(" ");
-    let dayString = title.substring(lastSpaceIndexInTitle - 2, lastSpaceIndexInTitle);
-    let monthString = title.substring(lastSpaceIndexInTitle - 4, lastSpaceIndexInTitle - 2);
-    return title.substring(0, lastSpaceIndexInTitle - 4) + "-" + monthString + "-" + dayString;
-  }
-
-  //add 0 if for ex date is 1 -> 01
-  function checkNulls(data: number) {
-    if (Number(data) < 10) return "0" + data.toString();
-    else return data.toString();
-  }
-
-  //give real date from utc string
-  function utcTimeToDate(utcTime: string) {
-    const dateFromUtcString = utcTime.substring(6, 19);
-    const dateFromUtc = new Date(Number(dateFromUtcString));
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const year = dateFromUtc.getUTCFullYear();
-    const month = months[dateFromUtc.getMonth()];
-    const day = dateFromUtc.getDate();
-    const dayCorrected = checkNulls(day);
-    const hour = dateFromUtc.getHours();
-    let hourCorrected = checkNulls(hour);
-    let min = dateFromUtc.getMinutes();
-    let minCorrected = checkNulls(min);
-    let sec = dateFromUtc.getSeconds();
-    let secCorrected = checkNulls(sec);
-    const time = year + " " + month + " " + dayCorrected + " " + hourCorrected + ":" + minCorrected + ":" + secCorrected;
-    return time;
-  }
-
   let correctedTitle = getCorrectedTite(broadcast.title);
   let availableUntil = broadcast.availablestoputc !== undefined ? utcTimeToDate(broadcast.availablestoputc) : "";
   let broadcastdate = broadcast.broadcastdateutc !== undefined ? utcTimeToDate(broadcast.broadcastdateutc) : "";

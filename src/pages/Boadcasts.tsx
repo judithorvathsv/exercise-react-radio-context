@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { get } from "../http";
+import { get } from "../utilities/http";
 import Broadcast from "./Broadcast";
 import { IBroadcastProps } from "../interfaces";
 

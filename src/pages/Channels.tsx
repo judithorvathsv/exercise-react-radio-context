@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Channel from "./Channel";
 import { IChannelProps } from "../interfaces";
 import { useEffect, useState } from "react";
-import { get } from "../http";
+import { get } from "../utilities/http";
 
 const Channels = () => {
   const [channels, setChannels] = useState<IChannelProps[]>();

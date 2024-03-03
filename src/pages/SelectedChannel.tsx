@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { ReactNode, useEffect, useState } from "react";
-import { get } from "../http";
+import { get } from "../utilities/http";
 import Program from "./Program";
 import Categories from "./Categories";
 

@@ -12,7 +12,9 @@ const SelectedProgram = () => {
           Tillbaka till program
         </Link>
         <section id="selectedProgramSection">
-          <img src={program.programimage} alt="Program picture" id="selectedProgramImg" />
+          <a href={program.programurl}>
+            <img src={program.programimage} alt="Program picture" id="selectedProgramImg" />
+          </a>
           <div id="selectedProgramInfoWrapper">
             <p id="selectedProgramTitle">{program.name}</p>
             <p className="selectedProgramInfo">{program.description}</p>

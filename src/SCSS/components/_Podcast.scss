@@ -1,0 +1,26 @@
+@use "../abstracts/colors";
+
+#podcastWrapper {
+  display: flex;
+  flex-direction: column;
+  color: colors.$white;
+  line-height: 1.5;
+  background-color: colors.$black;
+  width: fit-content;
+  padding: 1rem;
+  margin: 1rem 2rem 1rem 0;
+}
+
+#podcastTitle {
+  font-size: 1.2rem;
+  margin-bottom: -1rem;
+}
+
+#podcastHr {
+  margin-bottom: 1rem;
+}
+
+#podcastInfoText {
+  width: 100%;
+  margin-bottom: 1rem;
+}

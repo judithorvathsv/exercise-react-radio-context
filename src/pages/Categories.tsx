@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ICategoryPops, IProgramCategoryProps } from "../interfaces";
-import { get } from "../http";
+import { get } from "../utilities/http";
 
 const Categories = ({ handleSelectedCategory }: ICategoryPops) => {
   const [categories, setCategories] = useState<IProgramCategoryProps[]>();
@@ -25,7 +25,7 @@ const Categories = ({ handleSelectedCategory }: ICategoryPops) => {
   return (
     <section id="categorySection">
       <label id="categoryLabel">Program kategori</label>
-      <select onChange={(e) => getSelectedCategory(e.target.value)} id='categorySelectBox'>
+      <select onChange={(e) => getSelectedCategory(e.target.value)} id="categorySelectBox">
         <option key={0} value={0}>
           Alla
         </option>
