@@ -3,6 +3,8 @@
 #categorySection {
   padding-top: 1rem;
   color: colors.$white;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #categoryLabel {
@@ -11,4 +13,12 @@
 
 #categorySelectBox {
   border-radius: 3px;
+}
+
+@media only screen and (max-width: 341px) {
+  #categorySection {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 }

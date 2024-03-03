@@ -2,9 +2,19 @@
 
 #inputDiv {
   padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #programInputLabel {
   color: colors.$white;
   margin-right: 1rem;
+}
+
+@media only screen and (max-width: 447px) {
+  #inputDiv {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 }
