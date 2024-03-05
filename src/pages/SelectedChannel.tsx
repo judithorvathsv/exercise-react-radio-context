@@ -13,18 +13,14 @@ const SelectedChannel = () => {
 
   //fetch all programs for selected channel and filter by category if there is selected category
   let url = `http://api.sr.se/api/v2/programs/index?channelid=${channel.id}&format=json`;
-  let selectedCategoryIdFromStorage = localStorage.getItem("selectedCategoryIdStorage");
-  if (Number(selectedCategoryId) > 0) {
-    selectedCategoryIdFromStorage = selectedCategoryId;
+  if (Number(selectedCategoryId) > 0) {   
     url = `http://api.sr.se/api/v2/programs/index?channelid=${channel.id}&programcategoryid=${selectedCategoryId}&format=json`;
   }
 
   useEffect(() => {
     async function fetchPrograms() {
       const data = (await get(url)) as any;
-      console.log(url);
       const fetchedProgramsToSelectedChannel: any = data.programs.map((fetchedPrograms: any) => {
-        console.log(fetchedPrograms);
         return fetchedPrograms;
       });
       setPrograms(fetchedProgramsToSelectedChannel);

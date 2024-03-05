@@ -15,11 +15,6 @@ const Programs = () => {
   let programArray: IOneProgramProps[] = [];
   const { selectedCategoryId } = useContext(CategoryContext);
 
-  //set selected category from Categories dropdown
-  let handleSelectedCategory = (selectedCategoryId: string) => {
-    localStorage.setItem("selectedCategoryIdStorage", selectedCategoryId);
-  };
-
   //fetch all programs and filter by category if there is selected category
   function handleProgramPage(e: any) {
     e.preventDefault();
@@ -32,7 +27,7 @@ const Programs = () => {
     url = `http://api.sr.se/api/v2/programs${categoryParameter}`;
   }
 
-  //fetch program: by page max 82 pages
+  //----fetch program: by page max 82 pages----
   useEffect(() => {
     async function fetchPrograms() {
       const data = (await get(url)) as any;
@@ -51,7 +46,7 @@ const Programs = () => {
     fetchPrograms().then((programs) => programs);
   }, [page]);
 
-  //fetch program: by category
+  //----fetch program: by category----
   useEffect(() => {
     async function fetchPrograms() {
       const data = (await get(url)) as any;
@@ -64,7 +59,7 @@ const Programs = () => {
     fetchPrograms().then((programs) => programs);
   }, [selectedCategoryId]);
 
-  //fetch searchedProgram by input in Navbar
+  //----fetch searchedProgram by input in Navbar----
   function handleSearchedProgram(searchedProgramName: string) {
     setSearchedProgramName(searchedProgramName);
   }
@@ -85,64 +80,12 @@ const Programs = () => {
     getSearchedPrograms();
   }, [searchedProgramName]);
 
-  //local storage data saving locally
-  function addOrRemoveProgramToLocalStorage(programToAddOrRemove: IOneProgramProps, isAdd: boolean) {
-    let likedProgramsStorage: any = localStorage.getItem("likedPrograsStorage");
-    let likedProgramsFromStorage = JSON.parse(likedProgramsStorage);
-    let likedProgramsFromStorageArray: any[] = [];
-
-    //if storage is not empty -> put in array for looping
-    if (likedProgramsStorage !== undefined && likedProgramsStorage !== null) {
-      //get program objects from storage to an array
-      let programValuesFromStorage = Object.values(likedProgramsFromStorage);
-      programValuesFromStorage.forEach((program) => likedProgramsFromStorageArray.push(program));
-
-      //adding new liked program, if it is not already added
-      if (isAdd) {
-        let isAlreadyAdded = false;
-        for (let i = 0; i < likedProgramsFromStorageArray.length; i++) {
-          if (likedProgramsFromStorageArray[i].id === programToAddOrRemove.id) {
-            isAlreadyAdded = true;
-          }
-        }
-        if (isAlreadyAdded == false) {
-          likedProgramsFromStorageArray.push(programToAddOrRemove);
-        }
-        localStorage.setItem("likedPrograsStorage", JSON.stringify(likedProgramsFromStorageArray));
-      }
-
-      //removing liked programs
-      else if (isAdd == false) {
-        for (let i = 0; i < likedProgramsFromStorageArray.length; i++) {
-          if (likedProgramsFromStorageArray[i].id === programToAddOrRemove.id) {
-            likedProgramsFromStorageArray.splice(i, 1);
-            localStorage.setItem("likedPrograsStorage", JSON.stringify(likedProgramsFromStorageArray));
-            break;
-          }
-        }
-      }
-    } else {
-      likedProgramsFromStorageArray.push(programToAddOrRemove);
-      localStorage.setItem("likedPrograsStorage", JSON.stringify(likedProgramsFromStorageArray));
-    }
-  }
-
-  //set liked Programs
-  function onSetLikedPrograms(likedProgram: IOneProgramProps) {
-    addOrRemoveProgramToLocalStorage(likedProgram, true);
-  }
-
-  //set disliked Programs
-  function removeLikedPrograms(dislikedProgram: IOneProgramProps) {
-    addOrRemoveProgramToLocalStorage(dislikedProgram, false);
-  }
-
   return (
     <div id="programsContainer">
       <h2 id="programsTitle">Alla Program</h2>
       <div id="searchWrapper">
         <h3>Sök i Program</h3>
-        <Categories />       
+        <Categories />
         <ProgramSearchInput handleSearchedProgram={handleSearchedProgram} />
       </div>
 
@@ -152,7 +95,7 @@ const Programs = () => {
           searchedProgramName.length > 1 &&
           searchedPrograms!.map((program: any) => (
             <Link to={`/programs/${program.id}`} state={{ program: program }}>
-              <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
+              <Program program={program} key={program.id} />
             </Link>
           ))}
       </div>
@@ -164,7 +107,7 @@ const Programs = () => {
           programs.length > 0 &&
           programs.map((program: any) => (
             <Link to={`/programs/${program.id}`} state={{ program: program }}>
-              <Program program={program} key={program.id} setLikedPrograms={onSetLikedPrograms} removeLikedPrograms={removeLikedPrograms} />
+              <Program program={program} key={program.id} />
             </Link>
           ))}
       </div>

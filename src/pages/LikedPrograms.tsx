@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
+import { LikedProgramContext } from "../contexts/LikedProgramContextProvider";
+import { useContext } from "react";
 
 const LikedPrograms = () => {
   let likedProgramsStorage: any = localStorage.getItem("likedPrograsStorage");
   let likedProgramsFromStorage = JSON.parse(likedProgramsStorage);
   let likedProgramsFromStorageArray: any[] = [];
   let likedPrograms: any[] = [];
+  const { likedProgramList } = useContext(LikedProgramContext);
 
   //if storage is not empty -> put in array for looping
   if (likedProgramsStorage !== undefined && likedProgramsStorage !== null) {
     let programValuesFromStorage = Object.values(likedProgramsFromStorage);
     programValuesFromStorage.forEach((program) => likedProgramsFromStorageArray.push(program));
     likedPrograms = likedProgramsFromStorageArray;
+  } else {
+    likedPrograms = likedProgramList;
   }
 
   if (likedPrograms.length == 0) {

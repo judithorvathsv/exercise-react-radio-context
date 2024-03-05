@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { IProgramProps } from "../interfaces";
+import { LikedProgramContext } from "../contexts/LikedProgramContextProvider";
 
-const Program = ({ program, setLikedPrograms, removeLikedPrograms }: IProgramProps) => {
+const Program = ({ program }: IProgramProps) => {
+  const { addLikedProgram, deleteLikedProgram } = useContext(LikedProgramContext);
+
   //get liked programs from local storage, give red heart for them
   useEffect(() => {
     let likedProgramsStorage: any = localStorage.getItem("likedPrograsStorage");
@@ -34,8 +37,7 @@ const Program = ({ program, setLikedPrograms, removeLikedPrograms }: IProgramPro
       let heartId = `heart${program.id}`;
       let heartImage = document.getElementById(heartId)!;
       heartImage.style.display = "inline-block";
-
-      setLikedPrograms!(program);
+      addLikedProgram(program);
     }
   }
   //dislike program
@@ -49,8 +51,7 @@ const Program = ({ program, setLikedPrograms, removeLikedPrograms }: IProgramPro
       let heartId = `heart${program.id}`;
       let heartImage = document.getElementById(heartId)!;
       heartImage.style.display = "none";
-
-      removeLikedPrograms!(program);
+      deleteLikedProgram!(program);
     }
   }
 
