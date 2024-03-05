@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import BroadcastPoddSwitchPanel from "./BroadcastPoddSwitchPanel";
-import { useState } from "react";
 
 const LikedPrograms = () => {
   let likedProgramsStorage: any = localStorage.getItem("likedPrograsStorage");
@@ -22,18 +20,6 @@ const LikedPrograms = () => {
         <p>You don't have any favorite program</p>
       </div>
     );
-  }
-
-  const [showTabs, setShowTabs] = useState<boolean>(true);
-
-  function handleTab() {
-    if (showTabs == true) {
-      setShowTabs(false);
-      document.getElementById("programAllBroadCasts")!.style.display = "none";
-    } else {
-      setShowTabs(true);
-      document.getElementById("programAllBroadCasts")!.style.display = "flex";
-    }
   }
 
   return (

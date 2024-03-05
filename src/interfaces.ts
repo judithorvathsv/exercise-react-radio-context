@@ -66,7 +66,7 @@ export interface IProgramCategoryProps {
 }
 
 export interface ICategoryPops {
-  handleSelectedCategory: (selectedOption: string) => void;
+  /*  handleSelectedCategory: (selectedOption: string) => void; */
 }
 
 export interface IBroadcastProps {

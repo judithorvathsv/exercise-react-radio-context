@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { get } from "../utilities/http";
 import Program from "./Program";
 import Categories from "./Categories";
 import ProgramSearchInput from "./ProgramSearchInput";
 import { IOneProgramProps } from "../interfaces";
 import { Link } from "react-router-dom";
+import { CategoryContext } from "../contexts/CategoryContextProvider";
 
 const Programs = () => {
   const [programs, setPrograms] = useState<IOneProgramProps[]>([]);
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string>("0");
   const [searchedProgramName, setSearchedProgramName] = useState<string>("");
   const [searchedPrograms, setSearchedPrograms] = useState<IOneProgramProps[]>([]);
   const [page, setPage] = useState(1);
   let programArray: IOneProgramProps[] = [];
+  const { selectedCategoryId } = useContext(CategoryContext);
 
   //set selected category from Categories dropdown
   let handleSelectedCategory = (selectedCategoryId: string) => {
-    setSelectedCategoryId(selectedCategoryId);
     localStorage.setItem("selectedCategoryIdStorage", selectedCategoryId);
   };
 
@@ -142,7 +142,7 @@ const Programs = () => {
       <h2 id="programsTitle">Alla Program</h2>
       <div id="searchWrapper">
         <h3>Sök i Program</h3>
-        <Categories handleSelectedCategory={handleSelectedCategory} />
+        <Categories />       
         <ProgramSearchInput handleSearchedProgram={handleSearchedProgram} />
       </div>
 

@@ -1,26 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react";
 import { get } from "../utilities/http";
 import Program from "./Program";
 import Categories from "./Categories";
+import { CategoryContext } from "../contexts/CategoryContextProvider";
 
 const SelectedChannel = () => {
   const [programs, setPrograms] = useState([]);
-  const [newCategory, setNewCategory] = useState<string>("");
-
-  let selectedCategoryId = localStorage.getItem("selectedCategoryIdStorage");
+  const { selectedCategoryId } = useContext(CategoryContext);
   const location = useLocation();
   const { channel } = location.state;
 
-  //change category
-  function handleSelectedCategory(categoryIdString: string) {
-    setNewCategory(categoryIdString);
-  }
-
   //fetch all programs for selected channel and filter by category if there is selected category
   let url = `http://api.sr.se/api/v2/programs/index?channelid=${channel.id}&format=json`;
+  let selectedCategoryIdFromStorage = localStorage.getItem("selectedCategoryIdStorage");
   if (Number(selectedCategoryId) > 0) {
-    selectedCategoryId = newCategory;
+    selectedCategoryIdFromStorage = selectedCategoryId;
     url = `http://api.sr.se/api/v2/programs/index?channelid=${channel.id}&programcategoryid=${selectedCategoryId}&format=json`;
   }
 
@@ -72,7 +67,7 @@ const SelectedChannel = () => {
         </a>
       </section>
 
-      <Categories handleSelectedCategory={handleSelectedCategory} />
+      <Categories />
 
       <p id="selectedChannelProgramTitle">Program</p>
 

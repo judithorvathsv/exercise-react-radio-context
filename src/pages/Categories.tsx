@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ICategoryPops, IProgramCategoryProps } from "../interfaces";
 import { get } from "../utilities/http";
+import { CategoryContext } from "../contexts/CategoryContextProvider";
 
-const Categories = ({ handleSelectedCategory }: ICategoryPops) => {
+const Categories = ({ /* handleSelectedCategory */ }: ICategoryPops) => {
   const [categories, setCategories] = useState<IProgramCategoryProps[]>();
+  const { setSelectedCategory } = useContext(CategoryContext);
 
   //send selected category to App
   function getSelectedCategory(selectedCategoryId: string) {
-    handleSelectedCategory(selectedCategoryId);
+   /*  handleSelectedCategory(selectedCategoryId); */
+    setSelectedCategory(selectedCategoryId);
   }
   //fetch all categories
   useEffect(() => {
